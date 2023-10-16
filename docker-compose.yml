@@ -1,0 +1,18 @@
+services:
+  todo-app:
+    image: camilagrandy/tareacumple:0.2
+    ports:
+      - 2345:3000
+    working_dir: /app
+		enviroment:
+			- MYSQL_HOST: mysql
+			- MYSQL_USER: root
+			- MYSQL_PASSWORD: password
+			- MYSQL_DB: todo_database
+		mysql-todo-app:
+			image: mysql:lastest
+			volumes:
+				- mysql:/var/lib/mysql
+			enviroment:
+				- MYSQL_ROOT_PASSWORD: password
+				- MYSQL_DATABASE: todo_database
